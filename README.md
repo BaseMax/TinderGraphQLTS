@@ -324,6 +324,775 @@ type Subscription {
 }
 ```
 
+## GraphQL Examples
+
+- getUser(id: ID!): User
+
+```graphql
+query {
+  getUser(id: "123") {
+    id
+    name
+    email
+    createdAt
+    updatedAt
+  }
+}
+```
+
+- getProfile(userId: ID!): Profile
+
+```graphql
+query {
+  getProfile(userId: "123") {
+    id
+    userId
+    bio
+    age
+    gender
+    location
+    interests
+    createdAt
+    updatedAt
+  }
+}
+```
+
+getPotentialMatches(userId: ID!): [Profile]
+
+```graphql
+query {
+  getPotentialMatches(userId: "123") {
+    id
+    userId
+    bio
+    age
+    gender
+    location
+    interests
+    createdAt
+    updatedAt
+  }
+}
+```
+
+getMatches(userId: ID!): [Profile]
+
+```graphql
+query {
+  getMatches(userId: "123") {
+    id
+    userId
+    bio
+    age
+    gender
+    location
+    interests
+    createdAt
+    updatedAt
+  }
+}
+```
+
+getMessages(userId: ID!, matchId: ID!): [Message]
+
+```graphql
+query {
+  getMessages(userId: "123", matchId: "456") {
+    id
+    conversationId
+    sender {
+      id
+      name
+      email
+    }
+    receiver {
+      id
+      name
+      email
+    }
+    content
+    createdAt
+    updatedAt
+  }
+}
+```
+
+## Mutation Examples
+
+registerUser(input: RegisterInput!): User
+
+```graphql
+mutation {
+  registerUser(input: { name: "John Doe", email: "john@example.com", password: "password" }) {
+    id
+    name
+    email
+    createdAt
+    updatedAt
+  }
+}
+```
+
+loginUser(email: String!, password: String!): AuthPayload
+
+```graphql
+mutation {
+  loginUser(email: "john@example.com", password: "password") {
+    token
+    user {
+      id
+      name
+      email
+      createdAt
+      updatedAt
+    }
+  }
+}
+```
+
+updateProfile(userId: ID!, input: UpdateProfileInput!): Profile
+
+```graphql
+mutation {
+  updateProfile(userId: "123", input: { bio: "I love hiking and traveling", age: 28, gender: MALE, location: "New York" }) {
+    id
+    userId
+    bio
+    age
+    gender
+    location
+    interests
+    createdAt
+    updatedAt
+  }
+}
+```
+
+swipeLeft(userId: ID!, potentialMatchId: ID!): Match
+```graphql
+mutation {
+  swipeLeft(userId: "123", potentialMatchId: "456") {
+    id
+    user1 {
+      id
+      name
+      email
+    }
+    user2 {
+      id
+      name
+      email
+    }
+    createdAt
+    updatedAt
+  }
+}
+```
+
+swipeRight(userId: ID!, potentialMatchId: ID!): Match
+
+```graphql
+mutation {
+  swipeRight(userId: "123", potentialMatchId: "456") {
+    id
+    user1 {
+      id
+      name
+      email
+    }
+    user2 {
+      id
+      name
+      email
+    }
+    createdAt
+    updatedAt
+  }
+}
+```
+
+getLikedProfiles(userId: ID!): [Profile]
+
+```graphql
+query {
+  getLikedProfiles(userId: "123") {
+    id
+    userId
+    bio
+    age
+    gender
+    location
+    interests
+    createdAt
+    updatedAt
+  }
+}
+```
+
+getDislikedProfiles(userId: ID!): [Profile]
+
+```graphql
+query {
+  getDislikedProfiles(userId: "123") {
+    id
+    userId
+    bio
+    age
+    gender
+    location
+    interests
+    createdAt
+    updatedAt
+  }
+}
+```
+
+getMatchedProfiles(userId: ID!): [Profile]
+
+```graphql
+query {
+  getMatchedProfiles(userId: "123") {
+    id
+    userId
+    bio
+    age
+    gender
+    location
+    interests
+    createdAt
+    updatedAt
+  }
+}
+```
+
+getConversation(userId: ID!, matchId: ID!): Conversation
+
+```graphql
+query {
+  getConversation(userId: "123", matchId: "456") {
+    id
+    user1 {
+      id
+      name
+      email
+    }
+    user2 {
+      id
+      name
+      email
+    }
+    messages {
+      id
+      conversationId
+      sender {
+        id
+        name
+        email
+      }
+      receiver {
+        id
+        name
+        email
+      }
+      content
+      createdAt
+      updatedAt
+    }
+    createdAt
+    updatedAt
+  }
+}
+```
+
+getConversations(userId: ID!): [Conversation]
+
+```graphql
+query {
+  getConversations(userId: "123") {
+    id
+    user1 {
+      id
+      name
+      email
+    }
+    user2 {
+      id
+      name
+      email
+    }
+    messages {
+      id
+      conversationId
+      sender {
+        id
+        name
+        email
+      }
+      receiver {
+        id
+        name
+        email
+      }
+      content
+      createdAt
+      updatedAt
+    }
+    createdAt
+    updatedAt
+  }
+}
+```
+
+likeProfile(userId: ID!, profileId: ID!): Like
+
+```graphql
+mutation {
+  likeProfile(userId: "123", profileId: "456") {
+    id
+    user {
+      id
+      name
+      email
+    }
+    profile {
+      id
+      userId
+      bio
+      age
+      gender
+      location
+      interests
+      createdAt
+      updatedAt
+    }
+    createdAt
+    updatedAt
+  }
+}
+```
+
+dislikeProfile(userId: ID!, profileId: ID!): Dislike
+
+```graphql
+mutation {
+  dislikeProfile(userId: "123", profileId: "456") {
+    id
+    user {
+      id
+      name
+      email
+    }
+    profile {
+      id
+      userId
+      bio
+      age
+      gender
+      location
+      interests
+      createdAt
+      updatedAt
+    }
+    createdAt
+    updatedAt
+  }
+}
+```
+
+unlikeProfile(userId: ID!, profileId: ID!): Like
+
+```graphql
+mutation {
+  unlikeProfile(userId: "123", profileId: "456") {
+    id
+    user {
+      id
+      name
+      email
+    }
+    profile {
+      id
+      userId
+      bio
+      age
+      gender
+      location
+      interests
+      createdAt
+      updatedAt
+    }
+    createdAt
+    updatedAt
+  }
+}
+```
+
+unmatch(userId: ID!, matchId: ID!): Match
+
+```graphql
+mutation {
+  unmatch(userId: "123", matchId: "456") {
+    id
+    user1 {
+      id
+      name
+      email
+    }
+    user2 {
+      id
+      name
+      email
+    }
+    createdAt
+    updatedAt
+  }
+}
+```
+
+deleteConversation(userId: ID!, matchId: ID!): Boolean
+
+```graphql
+mutation {
+  deleteConversation(userId: "123", matchId: "456")
+}
+```
+
+updateMessageReadStatus(messageId: ID!): Message
+
+```graphql
+mutation {
+  updateMessageReadStatus(messageId: "789") {
+    id
+    conversationId
+    sender {
+      id
+      name
+      email
+    }
+    receiver {
+      id
+      name
+      email
+    }
+    content
+    createdAt
+    updatedAt
+  }
+}
+```
+
+getBlocks(userId: ID!): [Block]
+
+```graphql
+query {
+  getBlocks(userId: "123") {
+    id
+    user {
+      id
+      name
+      email
+    }
+    blockedUser {
+      id
+      name
+      email
+    }
+    createdAt
+    updatedAt
+  }
+}
+```
+
+getNotifications(userId: ID!): [Notification]
+
+```graphql
+query {
+  getNotifications(userId: "123") {
+    id
+    userId
+    message
+    createdAt
+    updatedAt
+  }
+}
+```
+
+blockUser(userId: ID!, blockedUserId: ID!): Block
+
+```graphql
+mutation {
+  blockUser(userId: "123", blockedUserId: "456") {
+    id
+    user {
+      id
+      name
+      email
+    }
+    blockedUser {
+      id
+      name
+      email
+    }
+    createdAt
+    updatedAt
+  }
+}
+```
+
+unblockUser(userId: ID!, blockedUserId: ID!): Boolean
+
+```graphql
+mutation {
+  unblockUser(userId: "123", blockedUserId: "456")
+}
+```
+
+updateUserName(userId: ID!, name: String!): User
+
+```graphql
+mutation {
+  updateUserName(userId: "123", name: "John Smith") {
+    id
+    name
+    email
+    createdAt
+    updatedAt
+  }
+}
+```
+
+updateUserEmail(userId: ID!, email: String!): User
+
+```graphql
+mutation {
+  updateUserEmail(userId: "123", email: "johnsmith@example.com") {
+    id
+    name
+    email
+    createdAt
+    updatedAt
+  }
+}
+```
+
+updateUserPassword(userId: ID!, password: String!): User
+
+```graphql
+mutation {
+  updateUserPassword(userId: "123", password: "newpassword") {
+    id
+    name
+    email
+    createdAt
+    updatedAt
+  }
+}
+```
+
+markNotificationAsRead(notificationId: ID!): Notification
+
+```graphql
+mutation {
+  markNotificationAsRead(notificationId: "789") {
+    id
+    userId
+    message
+    createdAt
+    updatedAt
+  }
+}
+```
+
+getUser(id: ID!): User
+
+```graphql
+query {
+  getUser(id: "123") {
+    id
+    name
+    email
+    createdAt
+    updatedAt
+  }
+}
+```
+
+getProfile(userId: ID!): Profile
+
+```graphql
+query {
+  getProfile(userId: "123") {
+    id
+    userId
+    bio
+    age
+    gender
+    location
+    interests
+    createdAt
+    updatedAt
+  }
+}
+```
+
+getPotentialMatches(userId: ID!): [Profile]
+
+```graphql
+query {
+  getPotentialMatches(userId: "123") {
+    id
+    userId
+    bio
+    age
+    gender
+    location
+    interests
+    createdAt
+    updatedAt
+  }
+}
+```
+
+getMatches(userId: ID!): [Profile]
+
+```graphql
+query {
+  getMatches(userId: "123") {
+    id
+    userId
+    bio
+    age
+    gender
+    location
+    interests
+    createdAt
+    updatedAt
+  }
+}
+```
+
+getMessages(userId: ID!, matchId: ID!): [Message]
+
+```graphql
+query {
+  getMessages(userId: "123", matchId: "456") {
+    id
+    conversationId
+    sender {
+      id
+      name
+      email
+    }
+    receiver {
+      id
+      name
+      email
+    }
+    content
+    createdAt
+    updatedAt
+  }
+}
+```
+
+registerUser(input: RegisterInput!): User
+
+```graphql
+mutation {
+  registerUser(input: { name: "John Doe", email: "john@example.com", password: "password" }) {
+    id
+    name
+    email
+    createdAt
+    updatedAt
+  }
+}
+```
+
+loginUser(email: String!, password: String!): AuthPayload
+
+```graphql
+mutation {
+  loginUser(email: "john@example.com", password: "password") {
+    token
+    user {
+      id
+      name
+      email
+      createdAt
+      updatedAt
+    }
+  }
+}
+```
+
+updateProfile(userId: ID!, input: UpdateProfileInput!): Profile
+
+```graphql
+mutation {
+  updateProfile(userId: "123", input: { bio: "I love hiking and traveling", age: 28, gender: MALE, location: "New York" }) {
+    id
+    userId
+    bio
+    age
+    gender
+    location
+    interests
+    createdAt
+    updatedAt
+  }
+}
+```
+
+swipeLeft(userId: ID!, potentialMatchId: ID!): Match
+
+```graphql
+mutation {
+  swipeLeft(userId: "123", potentialMatchId: "456") {
+    id
+    user1 {
+      id
+      name
+      email
+    }
+    user2 {
+      id
+      name
+      email
+    }
+    createdAt
+    updatedAt
+  }
+}
+```
+
+swipeRight(userId: ID!, potentialMatchId: ID!): Match
+
+```graphql
+mutation {
+  swipeRight(userId: "123", potentialMatchId: "456") {
+    id
+    user1 {
+      id
+      name
+      email
+    }
+    user2 {
+      id
+      name
+      email
+    }
+    createdAt
+    updatedAt
+  }
+}
+```
+
+These examples provide further demonstrations of how to use the remaining queries and mutations in your Tinder clone application. Customize the input values as needed for testing and adapt them to suit your specific data and implementation requirements.
+
+Feel free to customize the input values according to your specific use cases. These examples showcase the usage of additional queries and mutations related to blocking users, updating user information, and handling notifications in your Tinder clone application.
+
 ## Documentation
 
 For detailed documentation on the available queries, mutations, and data structures, refer to the API documentation.
