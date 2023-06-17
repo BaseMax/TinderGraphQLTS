@@ -65,6 +65,100 @@ This will start the GraphQL server on http://localhost:4000/graphql.
 
 You can now send GraphQL queries and mutations to the server using a tool like GraphQL Playground or Insomnia. Open the respective tool and access http://localhost:4000/graphql to begin interacting with the API.
 
+## GraphQL
+
+### Queries
+
+- getUser(id: ID!): User
+
+Fetches a user by their unique identifier.
+
+- getProfile(userId: ID!): Profile
+
+Retrieves the profile associated with a specific user.
+
+- getPotentialMatches(userId: ID!): [Profile]
+
+Retrieves a list of potential matches for a user based on their preferences and interests.
+
+- getMatches(userId: ID!): [Profile]
+
+Retrieves a list of matched user profiles for a given user.
+
+- getMessages(userId: ID!, matchId: ID!): [Message]
+
+Retrieves a list of messages exchanged between a user and their matched user.
+
+- getLikedProfiles(userId: ID!): [Profile]
+
+Retrieves a list of profiles that a user has liked.
+
+- getDislikedProfiles(userId: ID!): [Profile]
+
+Retrieves a list of profiles that a user has disliked.
+
+- getMatchedProfiles(userId: ID!): [Profile]
+
+Retrieves a list of profiles that have been mutually matched with a user.
+
+- getConversation(userId: ID!, matchId: ID!): Conversation
+
+Retrieves the conversation history between a user and a specific match.
+
+- getConversations(userId: ID!): [Conversation]
+
+Retrieves a list of conversations that a user is currently engaged in.
+
+### Mutations
+
+- registerUser(input: RegisterInput!): User
+
+Registers a new user with the provided user details.
+
+- loginUser(email: String!, password: String!): AuthPayload
+
+Authenticates a user with the provided email and password, returning an authentication token.
+
+- updateProfile(userId: ID!, input: UpdateProfileInput!): Profile
+
+Updates the profile information for a given user.
+
+- swipeLeft(userId: ID!, potentialMatchId: ID!): Match
+
+Marks a potential match as rejected by a user.
+
+- swipeRight(userId: ID!, potentialMatchId: ID!): Match
+
+Marks a potential match as accepted by a user.
+
+- sendMessage(senderId: ID!, receiverId: ID!, message: String!): Message
+
+Sends a message from the sender to the receiver.
+
+- likeProfile(userId: ID!, profileId: ID!): Like
+
+Records that a user has liked a specific profile.
+
+- dislikeProfile(userId: ID!, profileId: ID!): Dislike
+
+Records that a user has disliked a specific profile.
+
+- unlikeProfile(userId: ID!, profileId: ID!): Like
+
+Removes the like status for a user on a specific profile.
+
+- unmatch(userId: ID!, matchId: ID!): Match
+
+Unmatches two users, ending the match connection between them.
+
+- deleteConversation(userId: ID!, matchId: ID!): Boolean
+
+Deletes the conversation history between a user and a specific match.
+
+- updateMessageReadStatus(messageId: ID!): Message
+
+Updates the read status of a specific message to mark it as read.
+
 ## Documentation
 
 For detailed documentation on the available queries, mutations, and data structures, refer to the API documentation.
