@@ -265,6 +265,21 @@ input UpdateProfileInput {
   interests: [String]
 }
 
+type Notification {
+  id: ID!
+  userId: ID!
+  message: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+input UpdateUserInput {
+  name: String
+  email: String
+  password: String
+}
+
+
 type Query {
   getUser(id: ID!): User
   getProfile(userId: ID!): Profile
@@ -276,6 +291,9 @@ type Query {
   getMatchedProfiles(userId: ID!): [Profile]
   getConversation(userId: ID!, matchId: ID!): Conversation
   getConversations(userId: ID!): [Conversation]
+
+  getBlocks(userId: ID!): [Block]
+  getNotifications(userId: ID!): [Notification]
 }
 
 type Mutation {
@@ -291,31 +309,7 @@ type Mutation {
   unmatch(userId: ID!, matchId: ID!): Match
   deleteConversation(userId: ID!, matchId: ID!): Boolean
   updateMessageReadStatus(messageId: ID!): Message
-}
 
-
-type Notification {
-  id: ID!
-  userId: ID!
-  message: String!
-  createdAt: DateTime!
-  updatedAt: DateTime!
-}
-
-input UpdateUserInput {
-  name: String
-  email: String
-  password: String
-}
-
-type Query {
-  // ...existing queries...
-  getBlocks(userId: ID!): [Block]
-  getNotifications(userId: ID!): [Notification]
-}
-
-type Mutation {
-  // ...existing mutations...
   blockUser(userId: ID!, blockedUserId: ID!): Block
   unblockUser(userId: ID!, blockedUserId: ID!): Boolean
   updateUserName(userId: ID!, name: String!): User
