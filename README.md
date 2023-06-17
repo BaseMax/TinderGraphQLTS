@@ -159,6 +159,177 @@ Deletes the conversation history between a user and a specific match.
 
 Updates the read status of a specific message to mark it as read.
 
+## GraphQL Types
+
+```graphql
+type User {
+  id: ID!
+  name: String!
+  email: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type Profile {
+  id: ID!
+  userId: ID!
+  bio: String
+  age: Int
+  gender: Gender
+  location: String
+  interests: [String]
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type AuthPayload {
+  token: String!
+  user: User!
+}
+
+type Match {
+  id: ID!
+  user1: User!
+  user2: User!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type Like {
+  id: ID!
+  user: User!
+  profile: Profile!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type Dislike {
+  id: ID!
+  user: User!
+  profile: Profile!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type Conversation {
+  id: ID!
+  user1: User!
+  user2: User!
+  messages: [Message]
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type Message {
+  id: ID!
+  conversationId: ID!
+  sender: User!
+  receiver: User!
+  content: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+enum Gender {
+  MALE
+  FEMALE
+  OTHER
+}
+
+scalar DateTime
+
+type Block {
+  id: ID!
+  user: User!
+  blockedUser: User!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type Subscription {
+  newMatch(userId: ID!): Match
+  newMessage(conversationId: ID!): Message
+}
+
+input RegisterInput {
+  name: String!
+  email: String!
+  password: String!
+}
+
+input UpdateProfileInput {
+  bio: String
+  age: Int
+  gender: Gender
+  location: String
+  interests: [String]
+}
+
+type Query {
+  getUser(id: ID!): User
+  getProfile(userId: ID!): Profile
+  getPotentialMatches(userId: ID!): [Profile]
+  getMatches(userId: ID!): [Profile]
+  getMessages(userId: ID!, matchId: ID!): [Message]
+  getLikedProfiles(userId: ID!): [Profile]
+  getDislikedProfiles(userId: ID!): [Profile]
+  getMatchedProfiles(userId: ID!): [Profile]
+  getConversation(userId: ID!, matchId: ID!): Conversation
+  getConversations(userId: ID!): [Conversation]
+}
+
+type Mutation {
+  registerUser(input: RegisterInput!): User
+  loginUser(email: String!, password: String!): AuthPayload
+  updateProfile(userId: ID!, input: UpdateProfileInput!): Profile
+  swipeLeft(userId: ID!, potentialMatchId: ID!): Match
+  swipeRight(userId: ID!, potentialMatchId: ID!): Match
+  sendMessage(senderId: ID!, receiverId: ID!, message: String!): Message
+  likeProfile(userId: ID!, profileId: ID!): Like
+  dislikeProfile(userId: ID!, profileId: ID!): Dislike
+  unlikeProfile(userId: ID!, profileId: ID!): Like
+  unmatch(userId: ID!, matchId: ID!): Match
+  deleteConversation(userId: ID!, matchId: ID!): Boolean
+  updateMessageReadStatus(messageId: ID!): Message
+}
+
+
+type Notification {
+  id: ID!
+  userId: ID!
+  message: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+input UpdateUserInput {
+  name: String
+  email: String
+  password: String
+}
+
+type Query {
+  // ...existing queries...
+  getBlocks(userId: ID!): [Block]
+  getNotifications(userId: ID!): [Notification]
+}
+
+type Mutation {
+  // ...existing mutations...
+  blockUser(userId: ID!, blockedUserId: ID!): Block
+  unblockUser(userId: ID!, blockedUserId: ID!): Boolean
+  updateUserName(userId: ID!, name: String!): User
+  updateUserEmail(userId: ID!, email: String!): User
+  updateUserPassword(userId: ID!, password: String!): User
+  markNotificationAsRead(notificationId: ID!): Notification
+}
+
+type Subscription {
+  // ...existing subscriptions...
+  newNotification(userId: ID!): Notification
+}
+```
+
 ## Documentation
 
 For detailed documentation on the available queries, mutations, and data structures, refer to the API documentation.
