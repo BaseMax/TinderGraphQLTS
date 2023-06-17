@@ -41,13 +41,13 @@ To set up and run the Tinder clone back-end locally, follow these steps:
 Clone the repository:
 
 ```bash
-git clone https://github.com/your-username/tinder-clone-backend.git
+git clone https://github.com/BaseMax/TinderGraphQLTS.git
 ```
 
 Install dependencies:
 
 ```bash
-cd tinder-clone-backend
+cd TinderGraphQLTS
 npm install
 ```
 
