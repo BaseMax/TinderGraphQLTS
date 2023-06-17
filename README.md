@@ -420,7 +420,7 @@ query {
 
 ## Mutation Examples
 
-registerUser(input: RegisterInput!): User
+- registerUser(input: RegisterInput!): User
 
 ```graphql
 mutation {
@@ -434,7 +434,7 @@ mutation {
 }
 ```
 
-loginUser(email: String!, password: String!): AuthPayload
+- loginUser(email: String!, password: String!): AuthPayload
 
 ```graphql
 mutation {
@@ -451,7 +451,7 @@ mutation {
 }
 ```
 
-updateProfile(userId: ID!, input: UpdateProfileInput!): Profile
+- updateProfile(userId: ID!, input: UpdateProfileInput!): Profile
 
 ```graphql
 mutation {
@@ -469,7 +469,8 @@ mutation {
 }
 ```
 
-swipeLeft(userId: ID!, potentialMatchId: ID!): Match
+- swipeLeft(userId: ID!, potentialMatchId: ID!): Match
+
 ```graphql
 mutation {
   swipeLeft(userId: "123", potentialMatchId: "456") {
@@ -490,7 +491,7 @@ mutation {
 }
 ```
 
-swipeRight(userId: ID!, potentialMatchId: ID!): Match
+- swipeRight(userId: ID!, potentialMatchId: ID!): Match
 
 ```graphql
 mutation {
@@ -512,7 +513,7 @@ mutation {
 }
 ```
 
-getLikedProfiles(userId: ID!): [Profile]
+- getLikedProfiles(userId: ID!): [Profile]
 
 ```graphql
 query {
@@ -530,7 +531,7 @@ query {
 }
 ```
 
-getDislikedProfiles(userId: ID!): [Profile]
+- getDislikedProfiles(userId: ID!): [Profile]
 
 ```graphql
 query {
@@ -548,7 +549,7 @@ query {
 }
 ```
 
-getMatchedProfiles(userId: ID!): [Profile]
+- getMatchedProfiles(userId: ID!): [Profile]
 
 ```graphql
 query {
@@ -566,7 +567,7 @@ query {
 }
 ```
 
-getConversation(userId: ID!, matchId: ID!): Conversation
+- getConversation(userId: ID!, matchId: ID!): Conversation
 
 ```graphql
 query {
@@ -605,7 +606,7 @@ query {
 }
 ```
 
-getConversations(userId: ID!): [Conversation]
+- getConversations(userId: ID!): [Conversation]
 
 ```graphql
 query {
@@ -644,7 +645,7 @@ query {
 }
 ```
 
-likeProfile(userId: ID!, profileId: ID!): Like
+- likeProfile(userId: ID!, profileId: ID!): Like
 
 ```graphql
 mutation {
@@ -672,7 +673,7 @@ mutation {
 }
 ```
 
-dislikeProfile(userId: ID!, profileId: ID!): Dislike
+- dislikeProfile(userId: ID!, profileId: ID!): Dislike
 
 ```graphql
 mutation {
@@ -700,7 +701,7 @@ mutation {
 }
 ```
 
-unlikeProfile(userId: ID!, profileId: ID!): Like
+- unlikeProfile(userId: ID!, profileId: ID!): Like
 
 ```graphql
 mutation {
@@ -728,7 +729,7 @@ mutation {
 }
 ```
 
-unmatch(userId: ID!, matchId: ID!): Match
+- unmatch(userId: ID!, matchId: ID!): Match
 
 ```graphql
 mutation {
@@ -750,7 +751,7 @@ mutation {
 }
 ```
 
-deleteConversation(userId: ID!, matchId: ID!): Boolean
+- deleteConversation(userId: ID!, matchId: ID!): Boolean
 
 ```graphql
 mutation {
@@ -758,7 +759,7 @@ mutation {
 }
 ```
 
-updateMessageReadStatus(messageId: ID!): Message
+- updateMessageReadStatus(messageId: ID!): Message
 
 ```graphql
 mutation {
@@ -782,7 +783,7 @@ mutation {
 }
 ```
 
-getBlocks(userId: ID!): [Block]
+- getBlocks(userId: ID!): [Block]
 
 ```graphql
 query {
@@ -804,7 +805,7 @@ query {
 }
 ```
 
-getNotifications(userId: ID!): [Notification]
+- getNotifications(userId: ID!): [Notification]
 
 ```graphql
 query {
@@ -818,7 +819,7 @@ query {
 }
 ```
 
-blockUser(userId: ID!, blockedUserId: ID!): Block
+- blockUser(userId: ID!, blockedUserId: ID!): Block
 
 ```graphql
 mutation {
@@ -840,7 +841,7 @@ mutation {
 }
 ```
 
-unblockUser(userId: ID!, blockedUserId: ID!): Boolean
+- unblockUser(userId: ID!, blockedUserId: ID!): Boolean
 
 ```graphql
 mutation {
@@ -848,7 +849,7 @@ mutation {
 }
 ```
 
-updateUserName(userId: ID!, name: String!): User
+- updateUserName(userId: ID!, name: String!): User
 
 ```graphql
 mutation {
@@ -862,7 +863,7 @@ mutation {
 }
 ```
 
-updateUserEmail(userId: ID!, email: String!): User
+- updateUserEmail(userId: ID!, email: String!): User
 
 ```graphql
 mutation {
@@ -876,7 +877,7 @@ mutation {
 }
 ```
 
-updateUserPassword(userId: ID!, password: String!): User
+- updateUserPassword(userId: ID!, password: String!): User
 
 ```graphql
 mutation {
@@ -890,7 +891,7 @@ mutation {
 }
 ```
 
-markNotificationAsRead(notificationId: ID!): Notification
+- markNotificationAsRead(notificationId: ID!): Notification
 
 ```graphql
 mutation {
@@ -904,7 +905,7 @@ mutation {
 }
 ```
 
-getUser(id: ID!): User
+- getUser(id: ID!): User
 
 ```graphql
 query {
@@ -918,7 +919,7 @@ query {
 }
 ```
 
-getProfile(userId: ID!): Profile
+- getProfile(userId: ID!): Profile
 
 ```graphql
 query {
@@ -936,7 +937,7 @@ query {
 }
 ```
 
-getPotentialMatches(userId: ID!): [Profile]
+- getPotentialMatches(userId: ID!): [Profile]
 
 ```graphql
 query {
@@ -954,7 +955,7 @@ query {
 }
 ```
 
-getMatches(userId: ID!): [Profile]
+- getMatches(userId: ID!): [Profile]
 
 ```graphql
 query {
@@ -972,7 +973,7 @@ query {
 }
 ```
 
-getMessages(userId: ID!, matchId: ID!): [Message]
+- getMessages(userId: ID!, matchId: ID!): [Message]
 
 ```graphql
 query {
@@ -996,7 +997,7 @@ query {
 }
 ```
 
-registerUser(input: RegisterInput!): User
+- registerUser(input: RegisterInput!): User
 
 ```graphql
 mutation {
@@ -1010,7 +1011,7 @@ mutation {
 }
 ```
 
-loginUser(email: String!, password: String!): AuthPayload
+- loginUser(email: String!, password: String!): AuthPayload
 
 ```graphql
 mutation {
@@ -1027,7 +1028,7 @@ mutation {
 }
 ```
 
-updateProfile(userId: ID!, input: UpdateProfileInput!): Profile
+- updateProfile(userId: ID!, input: UpdateProfileInput!): Profile
 
 ```graphql
 mutation {
@@ -1045,7 +1046,7 @@ mutation {
 }
 ```
 
-swipeLeft(userId: ID!, potentialMatchId: ID!): Match
+- swipeLeft(userId: ID!, potentialMatchId: ID!): Match
 
 ```graphql
 mutation {
@@ -1067,7 +1068,7 @@ mutation {
 }
 ```
 
-swipeRight(userId: ID!, potentialMatchId: ID!): Match
+- swipeRight(userId: ID!, potentialMatchId: ID!): Match
 
 ```graphql
 mutation {
