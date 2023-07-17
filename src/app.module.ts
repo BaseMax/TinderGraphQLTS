@@ -6,7 +6,10 @@ import { join } from "path";
 import { GraphQLError, GraphQLFormattedError } from "graphql";
 import { ConfigModule, ConfigService } from "@nestjs/config";
 import { MongooseModule } from "@nestjs/mongoose";
-import { AuthModule } from './auth/auth.module';
+import { AuthModule } from "./auth/auth.module";
+import { UserModule } from "./user/user.module";
+import { APP_FILTER } from "@nestjs/core";
+import { GraphqlErrorFilter } from "./expection/error.handling";
 
 @Module({
   imports: [
@@ -33,9 +36,14 @@ import { AuthModule } from './auth/auth.module';
 
       inject: [ConfigService],
     }),
-
     AuthModule,
+    UserModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: APP_FILTER,
+      useClass: GraphqlErrorFilter,
+    },
+  ],
 })
 export class AppModule {}

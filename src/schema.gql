@@ -1,0 +1,52 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type AuthPayload {
+  token: String!
+  name: String!
+}
+
+type User {
+  name: String!
+  interests: [String!]!
+  age: Int
+}
+
+type Query {
+  user(id: Int!): User!
+  findAllUserProfiles: [User!]!
+  searchUser(searchUser: SearchInput!): [User!]!
+}
+
+input SearchInput {
+  location: String
+  interests: [String!]
+  age: Float
+}
+
+type Mutation {
+  signup(signupInput: SignupInput!): AuthPayload!
+  login(loginInput: LoginInput!): AuthPayload!
+  updateUser(updateUserInput: UpdateUserInput!): User!
+  removeUser: User!
+}
+
+input SignupInput {
+  email: String!
+  password: String!
+  name: String!
+}
+
+input LoginInput {
+  email: String!
+  password: String!
+}
+
+input UpdateUserInput {
+  password: String
+  name: String
+  interests: [String!]
+  location: String
+  age: Int
+}
