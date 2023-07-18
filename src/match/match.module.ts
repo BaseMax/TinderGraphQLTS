@@ -13,10 +13,9 @@ import { MatchSchema } from "./entities/match.entity";
         schema: MatchSchema,
       },
     ]),
-    AuthModule
+    AuthModule,
   ],
   providers: [MatchResolver, MatchService],
+  exports: [MatchService],
 })
 export class MatchModule {}
-
-

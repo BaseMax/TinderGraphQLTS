@@ -11,6 +11,7 @@ import { UserModule } from "./user/user.module";
 import { APP_FILTER } from "@nestjs/core";
 import { GraphqlErrorFilter } from "./expection/error.handling";
 import { MatchModule } from "./match/match.module";
+import { ChatModule } from './chat/chat.module';
 
 @Module({
   imports: [
@@ -47,6 +48,7 @@ import { MatchModule } from "./match/match.module";
     AuthModule,
     UserModule,
     MatchModule,
+    ChatModule,
   ],
   providers: [
     {

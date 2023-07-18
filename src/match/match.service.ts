@@ -51,7 +51,7 @@ export class MatchService {
 
   haveYouOfferedMatch(matchId: string, userId: string) {
     console.log(matchId);
-    
+
     return this.matchModel.findOne({
       $and: [
         {
@@ -66,11 +66,10 @@ export class MatchService {
   }
 
   async updateMatchState(userId: string, updateMatch: UpdateMatchInput) {
-    const match = await 
-  this.haveYouOfferedMatch(updateMatch.id, userId);
+    const match = await this.haveYouOfferedMatch(updateMatch.id, userId);
 
-  console.log(match);
-  
+    console.log(match);
+
     if (!match)
       throw new ForbiddenException("you haven't offered by this match");
 
@@ -81,8 +80,6 @@ export class MatchService {
     if (updateMatch.state === "reject") {
       return await this.rejectMatch(updateMatch.id);
     }
-
-
   }
 
   async rejectMatch(id: string): Promise<MatchDocument> {
@@ -128,5 +125,15 @@ export class MatchService {
     }
 
     return { firstUserId, secondUserId };
+  }
+
+  async isUserInMatch(matchId: string, userId: string): Promise<boolean> {
+    const match = await this.findOneOrThrowError(matchId);
+
+    const isFirstUser = match.firstUserId.toString() === userId ? true : false;
+    const isSecondUser =
+      match.secondUserId.toString() === userId ? true : false;
+
+    return isFirstUser || isSecondUser ? true : false;
   }
 }
