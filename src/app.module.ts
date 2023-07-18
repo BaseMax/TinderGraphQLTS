@@ -10,6 +10,7 @@ import { AuthModule } from "./auth/auth.module";
 import { UserModule } from "./user/user.module";
 import { APP_FILTER } from "@nestjs/core";
 import { GraphqlErrorFilter } from "./expection/error.handling";
+import { MatchModule } from "./match/match.module";
 
 @Module({
   imports: [
@@ -27,6 +28,13 @@ import { GraphqlErrorFilter } from "./expection/error.handling";
         };
         return graphQLFormattedError;
       },
+
+      installSubscriptionHandlers: true,
+      subscriptions: {
+        "subscriptions-transport-ws": {
+          path: "/graphql",
+        },
+      },
     }),
 
     MongooseModule.forRootAsync({
@@ -38,6 +46,7 @@ import { GraphqlErrorFilter } from "./expection/error.handling";
     }),
     AuthModule,
     UserModule,
+    MatchModule,
   ],
   providers: [
     {
