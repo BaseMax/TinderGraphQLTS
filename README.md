@@ -65,6 +65,28 @@ This will start the GraphQL server on http://localhost:4000/graphql.
 
 You can now send GraphQL queries and mutations to the server using a tool like GraphQL Playground or Insomnia. Open the respective tool and access http://localhost:4000/graphql to begin interacting with the API.
 
+## GraphQL Demo
+
+![Tinder GraphQL TS](acceptMacth.png)
+
+![Tinder GraphQL TS](createMatch.png)
+
+![Tinder GraphQL TS](getAllMatchSuggestions.png)
+
+![Tinder GraphQL TS](getAllMessages-In-match.png)
+
+![Tinder GraphQL TS](getAllUserProfiles.png)
+
+![Tinder GraphQL TS](login.png)
+
+![Tinder GraphQL TS](removeMessage.png)
+
+![Tinder GraphQL TS](searchUser.png)
+
+![Tinder GraphQL TS](signup.png)
+
+![Tinder GraphQL TS](updateUser.png)
+
 ## GraphQL
 
 ### Queries
