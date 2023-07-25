@@ -67,25 +67,25 @@ You can now send GraphQL queries and mutations to the server using a tool like G
 
 ## GraphQL Demo
 
-![Tinder GraphQL TS](acceptMacth.png)
+![Tinder GraphQL TS](screenSchots/acceptMacth.png)
 
-![Tinder GraphQL TS](createMatch.png)
+![Tinder GraphQL TS](screenSchots/createMatch.png)
 
-![Tinder GraphQL TS](getAllMatchSuggestions.png)
+![Tinder GraphQL TS](screenSchots/getAllMatchSuggestions.png)
 
-![Tinder GraphQL TS](getAllMessages-In-match.png)
+![Tinder GraphQL TS](screenSchots/getAllMessages-In-match.png)
 
-![Tinder GraphQL TS](getAllUserProfiles.png)
+![Tinder GraphQL TS](screenSchots/getAllUserProfiles.png)
 
-![Tinder GraphQL TS](login.png)
+![Tinder GraphQL TS](screenSchots/login.png)
 
-![Tinder GraphQL TS](removeMessage.png)
+![Tinder GraphQL TS](screenSchots/removeMessage.png)
 
-![Tinder GraphQL TS](searchUser.png)
+![Tinder GraphQL TS](screenSchots/searchUser.png)
 
-![Tinder GraphQL TS](signup.png)
+![Tinder GraphQL TS](screenSchots/signup.png)
 
-![Tinder GraphQL TS](updateUser.png)
+![Tinder GraphQL TS](screenSchots/updateUser.png)
 
 ## GraphQL
 
